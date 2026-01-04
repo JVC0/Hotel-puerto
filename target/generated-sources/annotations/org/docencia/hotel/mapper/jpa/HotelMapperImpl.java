@@ -7,8 +7,8 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2025-12-22T13:00:08+0100",
-    comments = "version: 1.5.5.Final, compiler: Eclipse JDT (IDE) 3.45.0.v20251218-1032, environment: Java 21.0.9 (Eclipse Adoptium)"
+    date = "2026-01-04T13:24:48+0000",
+    comments = "version: 1.5.5.Final, compiler: javac, environment: Java 25 (Oracle Corporation)"
 )
 @Component
 public class HotelMapperImpl implements HotelMapper {
@@ -21,6 +21,10 @@ public class HotelMapperImpl implements HotelMapper {
 
         HotelEntity hotelEntity = new HotelEntity();
 
+        hotelEntity.setId( domain.getId() );
+        hotelEntity.setName( domain.getName() );
+        hotelEntity.setAddress( domain.getAddress() );
+
         return hotelEntity;
     }
 
@@ -31,6 +35,10 @@ public class HotelMapperImpl implements HotelMapper {
         }
 
         Hotel hotel = new Hotel();
+
+        hotel.setId( entity.getId() );
+        hotel.setName( entity.getName() );
+        hotel.setAddress( entity.getAddress() );
 
         return hotel;
     }

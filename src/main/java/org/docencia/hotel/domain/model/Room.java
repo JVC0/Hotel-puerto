@@ -1,24 +1,26 @@
 package org.docencia.hotel.domain.model;
 import java.util.Objects;
 
+import org.docencia.hotel.persistence.jpa.entity.HotelEntity;
+
 public class Room {
     private String id ;
     private String number;
     private String type;
     private double price_per_night;
-    private String hotle_id;
+    private HotelEntity hotel;
     public Room(String id) {
         this.id =id;
     }
     public Room() {
     }
 
-    public Room(String id, String number, String type, double price_per_night, String hotle_id) {
+    public Room(String id, String number, String type, double price_per_night, HotelEntity hotel) {
         this.id = id;
         this.number = number;
         this.type = type;
         this.price_per_night = price_per_night;
-        this.hotle_id = hotle_id;
+        this.hotel = hotel;
     }
 
     public String getId() {
@@ -53,18 +55,14 @@ public class Room {
         this.price_per_night = price_per_night;
     }
 
-    public String getHotle_id() {
-        return this.hotle_id;
+    public HotelEntity getHotel() {
+        return this.hotel;
     }
 
-    public void setHotle_id(String hotle_id) {
-        this.hotle_id = hotle_id;
+    public void setHotel(HotelEntity hotel) {
+        this.hotel = hotel;
     }
 
-    public Room id(String id) {
-        setId(id);
-        return this;
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -74,7 +72,7 @@ public class Room {
             return false;
         }
         Room room = (Room) o;
-        return Objects.equals(id, room.id) ;
+        return Objects.equals(id, room.id);
     }
 
     @Override
@@ -89,8 +87,7 @@ public class Room {
             ", number='" + getNumber() + "'" +
             ", type='" + getType() + "'" +
             ", price_per_night='" + getPrice_per_night() + "'" +
-            ", hotle_id='" + getHotle_id() + "'" +
+            ", hotel='" + getHotel() + "'" +
             "}";
     }
-    
 }
