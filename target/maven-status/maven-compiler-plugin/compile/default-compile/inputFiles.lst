@@ -24,7 +24,7 @@ C:\Users\joseph\Desktop\Hotel-puerto\src\main\java\org\docencia\hotel\persistenc
 C:\Users\joseph\Desktop\Hotel-puerto\src\main\java\org\docencia\hotel\persistence\jpa\entity\RoomEntity.java
 C:\Users\joseph\Desktop\Hotel-puerto\src\main\java\org\docencia\hotel\persistence\nosql\document\GuestPreferencesDocument.java
 C:\Users\joseph\Desktop\Hotel-puerto\src\main\java\org\docencia\hotel\persistence\repository\jpa\BookingRepository.java
-C:\Users\joseph\Desktop\Hotel-puerto\src\main\java\org\docencia\hotel\persistence\repository\jpa\GuestJpaRepository.java
+C:\Users\joseph\Desktop\Hotel-puerto\src\main\java\org\docencia\hotel\persistence\repository\jpa\GuestRepository.java
 C:\Users\joseph\Desktop\Hotel-puerto\src\main\java\org\docencia\hotel\persistence\repository\jpa\HotelRepository.java
 C:\Users\joseph\Desktop\Hotel-puerto\src\main\java\org\docencia\hotel\persistence\repository\jpa\RoomRepository.java
 C:\Users\joseph\Desktop\Hotel-puerto\src\main\java\org\docencia\hotel\persistence\repository\nosql\GuestPreferencesRepository.java

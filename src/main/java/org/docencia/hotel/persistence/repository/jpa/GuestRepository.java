@@ -1,10 +1,9 @@
 package org.docencia.hotel.persistence.repository.jpa;
 
 
-import org.docencia.hotel.persistence.jpa.entity.RoomEntity;
+import org.docencia.hotel.persistence.jpa.entity.GuestEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 @Repository
-public interface RoomRepository extends  JpaRepository<RoomEntity, String>  {
-
+public interface GuestRepository  extends  JpaRepository<GuestEntity, String> {
 }

@@ -2,6 +2,8 @@ package org.docencia.hotel.persistence.nosql.document;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
+
 import java.util.Objects;
 
 @Document(collection = "guest_preferences")
@@ -9,17 +11,17 @@ public class GuestPreferencesDocument {
 
     @Id
     private String id;
-
+    @Field("guest_id")
     private String guestId;
-
+    @Field("preferred_language")
     private String preferredLanguage;
-
+    @Field("newsletter_opt_in")
     private boolean newsletterOptIn;
-
+    @Field("favorite_room_type")
     private String favoriteRoomType;
-
+    @Field("tags")
     private String[] tags;
-
+    @Field("notes")
     private String notes;
 
     public GuestPreferencesDocument(String id) {

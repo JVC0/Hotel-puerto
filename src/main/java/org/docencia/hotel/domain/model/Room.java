@@ -1,21 +1,21 @@
 package org.docencia.hotel.domain.model;
 import java.util.Objects;
 
-import org.docencia.hotel.persistence.jpa.entity.HotelEntity;
+
 
 public class Room {
     private String id ;
     private String number;
     private String type;
     private double price_per_night;
-    private HotelEntity hotel;
+    private Hotel hotel;
     public Room(String id) {
         this.id =id;
     }
     public Room() {
     }
 
-    public Room(String id, String number, String type, double price_per_night, HotelEntity hotel) {
+    public Room(String id, String number, String type, double price_per_night, Hotel hotel) {
         this.id = id;
         this.number = number;
         this.type = type;
@@ -55,11 +55,11 @@ public class Room {
         this.price_per_night = price_per_night;
     }
 
-    public HotelEntity getHotel() {
+    public Hotel getHotel() {
         return this.hotel;
     }
 
-    public void setHotel(HotelEntity hotel) {
+    public void setHotel(Hotel hotel) {
         this.hotel = hotel;
     }
 

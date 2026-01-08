@@ -1,13 +1,15 @@
 package org.docencia.hotel.mapper.jpa;
 
 import javax.annotation.processing.Generated;
+import org.docencia.hotel.domain.model.Hotel;
 import org.docencia.hotel.domain.model.Room;
+import org.docencia.hotel.persistence.jpa.entity.HotelEntity;
 import org.docencia.hotel.persistence.jpa.entity.RoomEntity;
 import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2026-01-04T13:24:48+0000",
+    date = "2026-01-07T18:38:37+0000",
     comments = "version: 1.5.5.Final, compiler: javac, environment: Java 25 (Oracle Corporation)"
 )
 @Component
@@ -25,7 +27,7 @@ public class RoomMapperImpl implements RoomMapper {
         roomEntity.setNumber( domain.getNumber() );
         roomEntity.setType( domain.getType() );
         roomEntity.setPrice_per_night( domain.getPrice_per_night() );
-        roomEntity.setHotel( domain.getHotel() );
+        roomEntity.setHotel( hotelToHotelEntity( domain.getHotel() ) );
 
         return roomEntity;
     }
@@ -42,8 +44,36 @@ public class RoomMapperImpl implements RoomMapper {
         room.setNumber( entity.getNumber() );
         room.setType( entity.getType() );
         room.setPrice_per_night( entity.getPrice_per_night() );
-        room.setHotel( entity.getHotel() );
+        room.setHotel( hotelEntityToHotel( entity.getHotel() ) );
 
         return room;
+    }
+
+    protected HotelEntity hotelToHotelEntity(Hotel hotel) {
+        if ( hotel == null ) {
+            return null;
+        }
+
+        HotelEntity hotelEntity = new HotelEntity();
+
+        hotelEntity.setId( hotel.getId() );
+        hotelEntity.setName( hotel.getName() );
+        hotelEntity.setAddress( hotel.getAddress() );
+
+        return hotelEntity;
+    }
+
+    protected Hotel hotelEntityToHotel(HotelEntity hotelEntity) {
+        if ( hotelEntity == null ) {
+            return null;
+        }
+
+        Hotel hotel = new Hotel();
+
+        hotel.setId( hotelEntity.getId() );
+        hotel.setName( hotelEntity.getName() );
+        hotel.setAddress( hotelEntity.getAddress() );
+
+        return hotel;
     }
 }

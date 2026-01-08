@@ -5,7 +5,6 @@ org\docencia\hotel\web\soap\GuestSoapService.class
 org\docencia\hotel\domain\api\RoomDomain.class
 org\docencia\hotel\mapper\jpa\HotelMapper.class
 org\docencia\hotel\service\api\HotelService.class
-org\docencia\hotel\persistence\repository\jpa\GuestJpaRepository.class
 org\docencia\hotel\domain\api\GuestDomain.class
 org\docencia\hotel\mapper\jpa\GuestMapperImpl.class
 org\docencia\hotel\mapper\jpa\RoomMapper.class
@@ -34,6 +33,7 @@ org\docencia\hotel\persistence\repository\jpa\BookingRepository.class
 org\docencia\hotel\domain\model\GuestPreferences.class
 org\docencia\hotel\domain\impl\HotelDomainImpl.class
 org\docencia\hotel\mapper\jpa\RoomMapperImpl.class
+org\docencia\hotel\persistence\repository\jpa\GuestRepository.class
 org\docencia\hotel\domain\impl\RoomDomainImpl.class
 org\docencia\hotel\persistence\jpa\entity\BookingEntity.class
 org\docencia\hotel\mapper\nosql\GuestPreferencesMapperImpl.class

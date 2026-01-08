@@ -1,15 +1,14 @@
 package org.docencia.hotel.domain.model;
 import java.util.Objects;
 
-import org.docencia.hotel.persistence.jpa.entity.GuestEntity;
-import org.docencia.hotel.persistence.jpa.entity.RoomEntity;
+
 
 
 
 public class Booking {
     private String id;
-    private RoomEntity room;
-    private GuestEntity guest;
+    private Room room;
+    private Guest guest;
     private String check_in;
     private String check_out;
 
@@ -19,7 +18,7 @@ public class Booking {
     public Booking() {
     }
 
-    public Booking(String id, RoomEntity room, GuestEntity guest, String check_in, String check_out) {
+    public Booking(String id, Room room, Guest guest, String check_in, String check_out) {
         this.id = id;
         this.room = room;
         this.guest = guest;
@@ -35,19 +34,19 @@ public class Booking {
         this.id = id;
     }
 
-    public RoomEntity getRoom() {
+    public Room getRoom() {
         return this.room;
     }
 
-    public void setRoom(RoomEntity room) {
+    public void setRoom(Room room) {
         this.room = room;
     }
 
-    public GuestEntity getGuest() {
+    public Guest getGuest() {
         return this.guest;
     }
 
-    public void setGuest(GuestEntity guest) {
+    public void setGuest(Guest guest) {
         this.guest = guest;
     }
 
