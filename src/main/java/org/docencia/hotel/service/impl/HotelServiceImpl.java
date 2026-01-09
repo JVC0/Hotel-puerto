@@ -15,6 +15,10 @@ import org.springframework.stereotype.Service;
 public class HotelServiceImpl implements HotelService {
     private HotelRepository hotelRepository;
     private HotelMapper hotelMapper;
+    public HotelServiceImpl(HotelRepository hotelRepository, HotelMapper hotelMapper) {
+        this.hotelRepository = hotelRepository;
+        this.hotelMapper = hotelMapper;
+    }
     @Override
     public Optional<Hotel> findById(String id) {
         HotelEntity hotel= hotelRepository.findById(id).get();

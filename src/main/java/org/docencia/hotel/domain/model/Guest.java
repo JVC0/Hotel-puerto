@@ -6,18 +6,31 @@ public class Guest {
     private String full_name;
     private String email;
     private String phone;
+    private GuestPreferences preferences;
     public Guest(String id) {
         this.id=id;
     }
     public Guest() {
     }
 
-    public Guest(String id, String full_name, String email, String phone) {
+
+    public Guest(String id, String full_name, String email, String phone, GuestPreferences preferences) {
         this.id = id;
         this.full_name = full_name;
         this.email = email;
         this.phone = phone;
+        this.preferences = preferences;
     }
+
+    public GuestPreferences getPreferences() {
+        return this.preferences;
+    }
+
+    public void setPreferences(GuestPreferences preferences) {
+        this.preferences = preferences;
+    }
+
+  
 
     public String getId() {
         return this.id;

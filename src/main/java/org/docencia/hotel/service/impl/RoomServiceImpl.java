@@ -16,6 +16,10 @@ import org.springframework.stereotype.Service;
 public class RoomServiceImpl implements RoomService {
     private RoomRepository roomRepository;
     private RoomMapper roomMapper;
+    public RoomServiceImpl(RoomRepository roomRepository, RoomMapper roomMapper) {
+        this.roomRepository = roomRepository;
+        this.roomMapper = roomMapper;
+    }
     @Override
     public Optional<Room> findById(String id) {
         RoomEntity room  = roomRepository.findById(id).get();

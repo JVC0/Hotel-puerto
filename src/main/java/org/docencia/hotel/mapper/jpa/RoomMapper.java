@@ -4,8 +4,10 @@ import org.mapstruct.Mapper;
 import org.docencia.hotel.domain.model.Room;
 import org.docencia.hotel.persistence.jpa.entity.RoomEntity;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", uses = { HotelMapper.class })
 public interface RoomMapper {
+    
     RoomEntity toEntity(Room domain);
+
     Room toDomain(RoomEntity entity);
 }
