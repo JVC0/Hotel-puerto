@@ -32,7 +32,6 @@ public class BookingServiceImpl implements BookingService {
         List<BookingEntity> bookings= bookingRepository.findAll();
         List<Booking> result = new ArrayList<>();
         for(BookingEntity booking: bookings){
-            bookingMapper.toDomain(booking);
             result.add(bookingMapper.toDomain(booking));
         }
         return result;
