@@ -1,6 +1,10 @@
 package org.docencia.hotel.domain.impl;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.docencia.hotel.domain.api.GuestDomain;
+import org.docencia.hotel.domain.model.Guest;
 import org.docencia.hotel.service.api.GuestService;
 import org.springframework.stereotype.Service;
 
@@ -13,5 +17,25 @@ public class GuestDomainImpl implements GuestDomain {
         this.service = service;
     }
 
-    // TODO
+    @Override
+    public Optional<Guest> findById(String id) {
+        return service.findById(id);
+    }
+
+    @Override
+    public List<Guest> findAll() {
+        return service.findAll();
+    }
+
+    @Override
+    public Guest save(Guest guest) {
+        return service.save(guest);
+    }
+
+    @Override
+    public boolean deleteById(String guestId) {
+        return service.deleteById(guestId);
+    }
+
+  
 }

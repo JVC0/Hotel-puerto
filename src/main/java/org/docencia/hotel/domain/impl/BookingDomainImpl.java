@@ -1,6 +1,10 @@
 package org.docencia.hotel.domain.impl;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.docencia.hotel.domain.api.BookingDomain;
+import org.docencia.hotel.domain.model.Booking;
 import org.docencia.hotel.service.api.BookingService;
 import org.springframework.stereotype.Service;
 
@@ -13,5 +17,23 @@ public class BookingDomainImpl implements BookingDomain {
         this.service = service;
     }
 
-    // TODO
+    @Override
+    public Optional<Booking> findById(String id) {
+        return service.findById(id);
+    }
+
+    @Override
+    public List<Booking> findAll() {
+        return service.findAll();
+    }
+
+    @Override
+    public Booking save(Booking booking) {
+        return service.save(booking);
+    }
+
+    @Override
+    public boolean deleteById(String bookingId) {
+        return service.deleteById(bookingId);
+    }
 }
