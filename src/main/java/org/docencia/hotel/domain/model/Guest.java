@@ -1,4 +1,5 @@
 package org.docencia.hotel.domain.model;
+
 import java.util.Objects;
 
 public class Guest {
@@ -7,12 +8,13 @@ public class Guest {
     private String email;
     private String phone;
     private GuestPreferences preferences;
+
     public Guest(String id) {
-        this.id=id;
-    }
-    public Guest() {
+        this.id = id;
     }
 
+    public Guest() {
+    }
 
     public Guest(String id, String full_name, String email, String phone, GuestPreferences preferences) {
         this.id = id;
@@ -29,8 +31,6 @@ public class Guest {
     public void setPreferences(GuestPreferences preferences) {
         this.preferences = preferences;
     }
-
-  
 
     public String getId() {
         return this.id;
@@ -64,8 +64,6 @@ public class Guest {
         this.phone = phone;
     }
 
-
-
     @Override
     public boolean equals(Object o) {
         if (o == this)
@@ -74,7 +72,7 @@ public class Guest {
             return false;
         }
         Guest guest = (Guest) o;
-        return Objects.equals(id, guest.id) ;
+        return Objects.equals(id, guest.id);
     }
 
     @Override
@@ -85,11 +83,12 @@ public class Guest {
     @Override
     public String toString() {
         return "{" +
-            " id='" + getId() + "'" +
-            ", full_name='" + getFull_name() + "'" +
-            ", email='" + getEmail() + "'" +
-            ", phone='" + getPhone() + "'" +
-            "}";
+                " id='" + getId() + "'" +
+                ", full_name='" + getFull_name() + "'" +
+                ", email='" + getEmail() + "'" +
+                ", phone='" + getPhone() + "'" +
+                ", preferences='" + getPreferences() + "'" +
+                "}";
     }
-    
+
 }

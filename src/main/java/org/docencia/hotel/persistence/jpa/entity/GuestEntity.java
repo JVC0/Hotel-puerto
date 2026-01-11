@@ -1,10 +1,10 @@
 package org.docencia.hotel.persistence.jpa.entity;
 
+import java.util.*;
+
 import org.docencia.hotel.domain.model.GuestPreferences;
 
 import jakarta.persistence.*;
-import java.util.Objects;
-
 
 @Entity
 @Table(name = "guest")
@@ -17,21 +17,26 @@ public class GuestEntity {
     private String email;
     @Column(name = "phone")
     private String phone;
+    @OneToMany(mappedBy = "guest")
+    private List<BookingEntity> booking;
 
     @Transient
     private GuestPreferences preferences;
 
     public GuestEntity() {
     }
+
     public GuestEntity(String id) {
         this.id = id;
     }
 
-    public GuestEntity(String id, String full_name, String email, String phone, GuestPreferences preferences) {
+    public GuestEntity(String id, String full_name, String email, String phone, List<BookingEntity> booking,
+            GuestPreferences preferences) {
         this.id = id;
         this.full_name = full_name;
         this.email = email;
         this.phone = phone;
+        this.booking = booking;
         this.preferences = preferences;
     }
 
@@ -67,6 +72,14 @@ public class GuestEntity {
         this.phone = phone;
     }
 
+    public List<BookingEntity> getBooking() {
+        return this.booking;
+    }
+
+    public void setBooking(List<BookingEntity> booking) {
+        this.booking = booking;
+    }
+
     public GuestPreferences getPreferences() {
         return this.preferences;
     }
@@ -74,7 +87,6 @@ public class GuestEntity {
     public void setPreferences(GuestPreferences preferences) {
         this.preferences = preferences;
     }
-
 
     @Override
     public boolean equals(Object o) {
@@ -95,12 +107,13 @@ public class GuestEntity {
     @Override
     public String toString() {
         return "{" +
-            " id='" + getId() + "'" +
-            ", full_name='" + getFull_name() + "'" +
-            ", email='" + getEmail() + "'" +
-            ", phone='" + getPhone() + "'" +
-            ", preferences='" + getPreferences() + "'" +
-            "}";
+                " id='" + getId() + "'" +
+                ", full_name='" + getFull_name() + "'" +
+                ", email='" + getEmail() + "'" +
+                ", phone='" + getPhone() + "'" +
+                ", booking='" + getBooking() + "'" +
+                ", preferences='" + getPreferences() + "'" +
+                "}";
     }
-    
+
 }

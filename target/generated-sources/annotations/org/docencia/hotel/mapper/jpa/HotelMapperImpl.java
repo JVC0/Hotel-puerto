@@ -1,5 +1,7 @@
 package org.docencia.hotel.mapper.jpa;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.annotation.processing.Generated;
 import org.docencia.hotel.domain.model.Hotel;
 import org.docencia.hotel.persistence.jpa.entity.HotelEntity;
@@ -7,11 +9,26 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2026-01-09T19:38:58+0000",
-    comments = "version: 1.5.5.Final, compiler: javac, environment: Java 25 (Eclipse Adoptium)"
+    date = "2026-01-11T02:54:41+0000",
+    comments = "version: 1.5.5.Final, compiler: Eclipse JDT (IDE) 3.45.0.v20260106-1640, environment: Java 21.0.9 (Eclipse Adoptium)"
 )
 @Component
 public class HotelMapperImpl implements HotelMapper {
+
+    @Override
+    public Hotel toDomain(HotelEntity entity) {
+        if ( entity == null ) {
+            return null;
+        }
+
+        Hotel hotel = new Hotel();
+
+        hotel.setId( entity.getId() );
+        hotel.setName( entity.getName() );
+        hotel.setAddress( entity.getAddress() );
+
+        return hotel;
+    }
 
     @Override
     public HotelEntity toEntity(Hotel domain) {
@@ -29,17 +46,16 @@ public class HotelMapperImpl implements HotelMapper {
     }
 
     @Override
-    public Hotel toDomain(HotelEntity entity) {
-        if ( entity == null ) {
+    public List<Hotel> toDomainList(List<HotelEntity> entities) {
+        if ( entities == null ) {
             return null;
         }
 
-        Hotel hotel = new Hotel();
+        List<Hotel> list = new ArrayList<Hotel>( entities.size() );
+        for ( HotelEntity hotelEntity : entities ) {
+            list.add( toDomain( hotelEntity ) );
+        }
 
-        hotel.setId( entity.getId() );
-        hotel.setName( entity.getName() );
-        hotel.setAddress( entity.getAddress() );
-
-        return hotel;
+        return list;
     }
 }

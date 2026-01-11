@@ -8,8 +8,8 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2026-01-09T19:38:58+0000",
-    comments = "version: 1.5.5.Final, compiler: javac, environment: Java 25 (Eclipse Adoptium)"
+    date = "2026-01-11T02:54:41+0000",
+    comments = "version: 1.5.5.Final, compiler: Eclipse JDT (IDE) 3.45.0.v20260106-1640, environment: Java 21.0.9 (Eclipse Adoptium)"
 )
 @Component
 public class GuestPreferencesMapperImpl implements GuestPreferencesMapper {

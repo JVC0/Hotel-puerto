@@ -1,14 +1,6 @@
 package org.docencia.hotel.persistence.jpa.entity;
 
-import org.docencia.hotel.domain.model.Guest;
-import org.docencia.hotel.domain.model.Room;
-
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import java.util.Objects;
 
 @Entity
@@ -17,22 +9,22 @@ public class BookingEntity {
     @Id
     private String id;
     @OneToOne
-    @JoinColumn(name = "room_id",nullable = false)
+    @JoinColumn(name = "room_id", nullable = false)
     private RoomEntity room;
     @OneToOne
-    @JoinColumn(name = "guest_id",nullable = false)
+    @JoinColumn(name = "guest_id", nullable = false)
     private GuestEntity guest;
-    @Column(name="check_in")
+    @Column(name = "check_in")
     private String check_in;
-    @Column(name="check_out")
+    @Column(name = "check_out")
     private String check_out;
 
     public BookingEntity(String id) {
-        this.id = id;   
-    }
-    public BookingEntity() {
+        this.id = id;
     }
 
+    public BookingEntity() {
+    }
 
     public BookingEntity(String id, RoomEntity room, GuestEntity guest, String check_in, String check_out) {
         this.id = id;
@@ -101,12 +93,12 @@ public class BookingEntity {
     @Override
     public String toString() {
         return "{" +
-            " id='" + getId() + "'" +
-            ", room='" + getRoom() + "'" +
-            ", guest='" + getGuest() + "'" +
-            ", check_in='" + getCheck_in() + "'" +
-            ", check_out='" + getCheck_out() + "'" +
-            "}";
+                " id='" + getId() + "'" +
+                ", room='" + getRoom() + "'" +
+                ", guest='" + getGuest() + "'" +
+                ", check_in='" + getCheck_in() + "'" +
+                ", check_out='" + getCheck_out() + "'" +
+                "}";
     }
-    
+
 }

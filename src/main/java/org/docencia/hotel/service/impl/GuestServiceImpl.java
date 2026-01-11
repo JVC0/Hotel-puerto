@@ -1,58 +1,65 @@
 package org.docencia.hotel.service.impl;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-
+import java.util.*;
 import org.docencia.hotel.domain.model.Guest;
 import org.docencia.hotel.mapper.jpa.GuestMapper;
+import org.docencia.hotel.mapper.nosql.GuestPreferencesMapper;
 import org.docencia.hotel.persistence.jpa.entity.GuestEntity;
+import org.docencia.hotel.persistence.nosql.document.GuestPreferencesDocument;
 import org.docencia.hotel.persistence.repository.jpa.GuestRepository;
+import org.docencia.hotel.persistence.repository.nosql.GuestPreferencesRepository;
 import org.docencia.hotel.service.api.GuestService;
 import org.springframework.stereotype.Service;
 
 @Service
 public class GuestServiceImpl implements GuestService {
+
+    private  GuestPreferencesRepository guestPreferencesRepository;
     private GuestRepository guestRepository;
     private GuestMapper guestMapper;
-    
-    public GuestServiceImpl(GuestRepository guestRepository, GuestMapper guestMapper) {
+
+    private GuestPreferencesMapper guestPreferencesMapper;
+
+    public GuestServiceImpl(GuestRepository guestRepository, GuestMapper guestMapper, GuestPreferencesMapper guestPreferencesMapper, GuestPreferencesRepository guestPreferencesRepository) {
         this.guestRepository = guestRepository;
         this.guestMapper = guestMapper;
+        this.guestPreferencesMapper = guestPreferencesMapper;
+        this.guestPreferencesRepository = guestPreferencesRepository;
     }
 
     @Override
-    public Optional<Guest> findById(String id) {
-        GuestEntity guest= guestRepository.findById(id).get();
-        return Optional.of(guestMapper.toDomain(guest));
+    public Optional<Guest> findById(String guestId) {
+        if (guestId == null) {
+            return Optional.empty();
+        }
+        return Optional.of(guestMapper.toDomain(guestRepository.findById(guestId).get()));
     }
 
     @Override
     public List<Guest> findAll() {
-        List<GuestEntity> guests= guestRepository.findAll();
-        List<Guest> result = new ArrayList<>();
-        for(GuestEntity guest: guests){
-            guestMapper.toDomain(guest);
-            result.add(guestMapper.toDomain(guest));
-        }
-        return result;
+        return guestMapper.toDomainList(guestRepository.findAll());
     }
 
     @Override
     public Guest save(Guest guest) {
         GuestEntity guestEntity = guestMapper.toEntity(guest);
         GuestEntity savedEntity = guestRepository.save(guestEntity);
-        return guestMapper.toDomain(savedEntity);
+        if (guest.getPreferences() == null) {
+            return guestMapper.toDomain(savedEntity);
+        }
+        GuestPreferencesDocument preferences = guestPreferencesMapper.toDocument(guest.getPreferences());
+        preferences.setGuestId(savedEntity.getId());
+        preferences = guestPreferencesRepository.save(preferences);
+        return guestMapper.toDomain(savedEntity, preferences);
     }
 
     @Override
     public boolean deleteById(String guestId) {
-        if(guestId!= null){
-            guestRepository.deleteById(guestId);
-            return true;
+        if (guestId == null) {
+            return false;
         }
-        return false    ;
+        guestRepository.deleteById(guestId);
+        return true;
     }
 
-    // TODO: inyectar repositorios + mappers y aplicar lógica
 }

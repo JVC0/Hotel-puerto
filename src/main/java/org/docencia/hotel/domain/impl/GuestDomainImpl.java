@@ -1,8 +1,6 @@
 package org.docencia.hotel.domain.impl;
 
-import java.util.List;
-import java.util.Optional;
-
+import java.util.*;
 import org.docencia.hotel.domain.api.GuestDomain;
 import org.docencia.hotel.domain.model.Guest;
 import org.docencia.hotel.service.api.GuestService;
@@ -37,5 +35,4 @@ public class GuestDomainImpl implements GuestDomain {
         return service.deleteById(guestId);
     }
 
-  
 }

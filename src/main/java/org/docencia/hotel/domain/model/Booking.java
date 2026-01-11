@@ -1,27 +1,25 @@
 package org.docencia.hotel.domain.model;
+
 import java.util.Objects;
-
-
-
-
 
 public class Booking {
     private String id;
-    private Room room;
-    private Guest guest;
+    private String roomId;
+    private String guestId;
     private String check_in;
     private String check_out;
 
     public Booking(String id) {
         this.id = id;
     }
+
     public Booking() {
     }
 
-    public Booking(String id, Room room, Guest guest, String check_in, String check_out) {
+    public Booking(String id, String roomId, String guestId, String check_in, String check_out) {
         this.id = id;
-        this.room = room;
-        this.guest = guest;
+        this.roomId = roomId;
+        this.guestId = guestId;
         this.check_in = check_in;
         this.check_out = check_out;
     }
@@ -34,20 +32,20 @@ public class Booking {
         this.id = id;
     }
 
-    public Room getRoom() {
-        return this.room;
+    public String getRoomId() {
+        return this.roomId;
     }
 
-    public void setRoom(Room room) {
-        this.room = room;
+    public void setRoomId(String roomId) {
+        this.roomId = roomId;
     }
 
-    public Guest getGuest() {
-        return this.guest;
+    public String getGuestId() {
+        return this.guestId;
     }
 
-    public void setGuest(Guest guest) {
-        this.guest = guest;
+    public void setGuestId(String guestId) {
+        this.guestId = guestId;
     }
 
     public String getCheck_in() {
@@ -65,7 +63,6 @@ public class Booking {
     public void setCheck_out(String check_out) {
         this.check_out = check_out;
     }
-
 
     @Override
     public boolean equals(Object o) {
@@ -86,15 +83,12 @@ public class Booking {
     @Override
     public String toString() {
         return "{" +
-            " id='" + getId() + "'" +
-            ", room='" + getRoom() + "'" +
-            ", guest='" + getGuest() + "'" +
-            ", check_in='" + getCheck_in() + "'" +
-            ", check_out='" + getCheck_out() + "'" +
-            "}";
+                " id='" + getId() + "'" +
+                ", roomId='" + getRoomId() + "'" +
+                ", guestId='" + getGuestId() + "'" +
+                ", check_in='" + getCheck_in() + "'" +
+                ", check_out='" + getCheck_out() + "'" +
+                "}";
     }
 
-
-  
-    
 }

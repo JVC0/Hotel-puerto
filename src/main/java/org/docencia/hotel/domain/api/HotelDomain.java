@@ -6,7 +6,10 @@ import org.docencia.hotel.domain.model.Hotel;
 
 public interface HotelDomain {
     Optional<Hotel> findById(String id);
+
     List<Hotel> findAll();
+
     Hotel save(Hotel hotel);
+
     boolean deleteById(String hotelId);
 }

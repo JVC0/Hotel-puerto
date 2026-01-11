@@ -3,7 +3,6 @@ package org.docencia.hotel.persistence.nosql.document;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
-
 import java.util.Objects;
 
 @Document(collection = "guest_preferences")
@@ -27,10 +26,12 @@ public class GuestPreferencesDocument {
     public GuestPreferencesDocument(String id) {
         this.id = id;
     }
+
     public GuestPreferencesDocument() {
     }
 
-    public GuestPreferencesDocument(String id, String guestId, String preferredLanguage, boolean newsletterOptIn, String favoriteRoomType, String[] tags, String notes) {
+    public GuestPreferencesDocument(String id, String guestId, String preferredLanguage, boolean newsletterOptIn,
+            String favoriteRoomType, String[] tags, String notes) {
         this.id = id;
         this.guestId = guestId;
         this.preferredLanguage = preferredLanguage;
@@ -100,7 +101,6 @@ public class GuestPreferencesDocument {
         this.notes = notes;
     }
 
-
     @Override
     public boolean equals(Object o) {
         if (o == this)
@@ -120,14 +120,14 @@ public class GuestPreferencesDocument {
     @Override
     public String toString() {
         return "{" +
-            " id='" + getId() + "'" +
-            ", guestId='" + getGuestId() + "'" +
-            ", preferredLanguage='" + getPreferredLanguage() + "'" +
-            ", newsletterOptIn='" + isNewsletterOptIn() + "'" +
-            ", favoriteRoomType='" + getFavoriteRoomType() + "'" +
-            ", tags='" + getTags() + "'" +
-            ", notes='" + getNotes() + "'" +
-            "}";
+                " id='" + getId() + "'" +
+                ", guestId='" + getGuestId() + "'" +
+                ", preferredLanguage='" + getPreferredLanguage() + "'" +
+                ", newsletterOptIn='" + isNewsletterOptIn() + "'" +
+                ", favoriteRoomType='" + getFavoriteRoomType() + "'" +
+                ", tags='" + getTags() + "'" +
+                ", notes='" + getNotes() + "'" +
+                "}";
     }
-    
+
 }

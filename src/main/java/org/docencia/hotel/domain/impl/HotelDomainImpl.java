@@ -1,8 +1,6 @@
 package org.docencia.hotel.domain.impl;
 
-import java.util.List;
-import java.util.Optional;
-
+import java.util.*;
 import org.docencia.hotel.domain.api.HotelDomain;
 import org.docencia.hotel.domain.model.Hotel;
 import org.docencia.hotel.service.api.HotelService;

@@ -1,11 +1,6 @@
 package org.docencia.hotel.persistence.jpa.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import java.util.Objects;
 
 @Entity
@@ -23,11 +18,11 @@ public class RoomEntity {
     @JoinColumn(name = "hotel_id", nullable = false)
     private HotelEntity hotel;
 
-    public RoomEntity() {
-    }
-
     public RoomEntity(String id) {
         this.id = id;
+    }
+
+    public RoomEntity() {
     }
 
     public RoomEntity(String id, String number, String type, double price_per_night, HotelEntity hotel) {
@@ -76,11 +71,6 @@ public class RoomEntity {
 
     public void setHotel(HotelEntity hotel) {
         this.hotel = hotel;
-    }
-
-    public RoomEntity id(String id) {
-        setId(id);
-        return this;
     }
 
     @Override

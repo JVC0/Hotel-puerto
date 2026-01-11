@@ -1,15 +1,11 @@
 package org.docencia.hotel.persistence.jpa.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import java.util.Objects;
 
 @Entity
 @Table(name = "hotel")
 public class HotelEntity {
-
     @Id
     private String id;
     @Column(name = "name")
@@ -19,6 +15,7 @@ public class HotelEntity {
 
     public HotelEntity() {
     }
+
     public HotelEntity(String id) {
         this.id = id;
     }
@@ -72,9 +69,10 @@ public class HotelEntity {
     @Override
     public String toString() {
         return "{" +
-            " id='" + getId() + "'" +
-            ", name='" + getName() + "'" +
-            ", address='" + getAddress() + "'" +
-            "}";
+                " id='" + getId() + "'" +
+                ", name='" + getName() + "'" +
+                ", address='" + getAddress() + "'" +
+                "}";
     }
+
 }

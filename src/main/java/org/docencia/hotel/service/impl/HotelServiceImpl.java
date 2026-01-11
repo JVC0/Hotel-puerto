@@ -1,9 +1,6 @@
 package org.docencia.hotel.service.impl;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-
+import java.util.*;
 import org.docencia.hotel.domain.model.Hotel;
 import org.docencia.hotel.mapper.jpa.HotelMapper;
 import org.docencia.hotel.persistence.jpa.entity.HotelEntity;
@@ -15,25 +12,23 @@ import org.springframework.stereotype.Service;
 public class HotelServiceImpl implements HotelService {
     private HotelRepository hotelRepository;
     private HotelMapper hotelMapper;
+
     public HotelServiceImpl(HotelRepository hotelRepository, HotelMapper hotelMapper) {
         this.hotelRepository = hotelRepository;
         this.hotelMapper = hotelMapper;
     }
+
     @Override
-    public Optional<Hotel> findById(String id) {
-        HotelEntity hotel= hotelRepository.findById(id).get();
-        return Optional.of(hotelMapper.toDomain(hotel));
+    public Optional<Hotel> findById(String hotelId) {
+        if (hotelId == null) {
+            return Optional.empty();
+        }
+        return Optional.of(hotelMapper.toDomain(hotelRepository.findById(hotelId).get()));
     }
 
     @Override
     public List<Hotel> findAll() {
-        List<HotelEntity> hotels= hotelRepository.findAll();
-        List<Hotel> result = new ArrayList<>();
-        for(HotelEntity hotel: hotels){
-            hotelMapper.toDomain(hotel);
-            result.add(hotelMapper.toDomain(hotel));
-        }
-        return result;
+        return hotelMapper.toDomainList(hotelRepository.findAll());
     }
 
     @Override
@@ -45,11 +40,11 @@ public class HotelServiceImpl implements HotelService {
 
     @Override
     public boolean deleteById(String hotelId) {
-        if(hotelId!= null){
-            hotelRepository.deleteById(hotelId);
-            return true;
+        if (hotelId == null) {
+            return false;
         }
-        return false    ;
+        hotelRepository.deleteById(hotelId);
+        return true;
     }
-    // TODO: inyectar repositorios + mappers y aplicar lógica
+
 }

@@ -5,13 +5,13 @@ import java.util.Optional;
 
 import org.docencia.hotel.domain.model.Booking;
 
-
-
-
 public interface BookingService {
-    Optional<Booking> findById(String id);
+    Optional<Booking> findById(String bookingId);
+
     List<Booking> findAll();
+
     Booking save(Booking booking);
+
     boolean deleteById(String bookingId);
-    
+
 }

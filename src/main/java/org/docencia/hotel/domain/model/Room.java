@@ -1,26 +1,27 @@
 package org.docencia.hotel.domain.model;
+
 import java.util.Objects;
 
-
-
 public class Room {
-    private String id ;
+    private String id;
     private String number;
     private String type;
     private double price_per_night;
-    private Hotel hotel;
+    private String hotelId;
+
     public Room(String id) {
-        this.id =id;
+        this.id = id;
     }
+
     public Room() {
     }
 
-    public Room(String id, String number, String type, double price_per_night, Hotel hotel) {
+    public Room(String id, String number, String type, double price_per_night, String hotelId) {
         this.id = id;
         this.number = number;
         this.type = type;
         this.price_per_night = price_per_night;
-        this.hotel = hotel;
+        this.hotelId = hotelId;
     }
 
     public String getId() {
@@ -55,14 +56,13 @@ public class Room {
         this.price_per_night = price_per_night;
     }
 
-    public Hotel getHotel() {
-        return this.hotel;
+    public String getHotelId() {
+        return this.hotelId;
     }
 
-    public void setHotel(Hotel hotel) {
-        this.hotel = hotel;
+    public void setHotelId(String hotelId) {
+        this.hotelId = hotelId;
     }
-
 
     @Override
     public boolean equals(Object o) {
@@ -83,11 +83,11 @@ public class Room {
     @Override
     public String toString() {
         return "{" +
-            " id='" + getId() + "'" +
-            ", number='" + getNumber() + "'" +
-            ", type='" + getType() + "'" +
-            ", price_per_night='" + getPrice_per_night() + "'" +
-            ", hotel='" + getHotel() + "'" +
-            "}";
+                " id='" + getId() + "'" +
+                ", number='" + getNumber() + "'" +
+                ", type='" + getType() + "'" +
+                ", price_per_night='" + getPrice_per_night() + "'" +
+                ", hotelId='" + getHotelId() + "'" +
+                "}";
     }
 }

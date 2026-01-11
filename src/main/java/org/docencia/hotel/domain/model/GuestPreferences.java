@@ -1,25 +1,21 @@
 package org.docencia.hotel.domain.model;
+
 import java.util.Objects;
 
 public class GuestPreferences {
     private String id;
-
     private String guestId;
-
     private String preferredLanguage;
-
     private boolean newsletterOptIn;
-
     private String favoriteRoomType;
-
     private String[] tags;
-
     private String notes;
 
     public GuestPreferences() {
     }
 
-    public GuestPreferences(String id, String guestId, String preferredLanguage, boolean newsletterOptIn, String favoriteRoomType, String[] tags, String notes) {
+    public GuestPreferences(String id, String guestId, String preferredLanguage, boolean newsletterOptIn,
+            String favoriteRoomType, String[] tags, String notes) {
         this.id = id;
         this.guestId = guestId;
         this.preferredLanguage = preferredLanguage;
@@ -89,8 +85,6 @@ public class GuestPreferences {
         this.notes = notes;
     }
 
-
-
     @Override
     public boolean equals(Object o) {
         if (o == this)
@@ -110,14 +104,14 @@ public class GuestPreferences {
     @Override
     public String toString() {
         return "{" +
-            " id='" + getId() + "'" +
-            ", guestId='" + getGuestId() + "'" +
-            ", preferredLanguage='" + getPreferredLanguage() + "'" +
-            ", newsletterOptIn='" + isNewsletterOptIn() + "'" +
-            ", favoriteRoomType='" + getFavoriteRoomType() + "'" +
-            ", tags='" + getTags() + "'" +
-            ", notes='" + getNotes() + "'" +
-            "}";
+                " id='" + getId() + "'" +
+                ", guestId='" + getGuestId() + "'" +
+                ", preferredLanguage='" + getPreferredLanguage() + "'" +
+                ", newsletterOptIn='" + isNewsletterOptIn() + "'" +
+                ", favoriteRoomType='" + getFavoriteRoomType() + "'" +
+                ", tags='" + getTags() + "'" +
+                ", notes='" + getNotes() + "'" +
+                "}";
     }
-    
+
 }
