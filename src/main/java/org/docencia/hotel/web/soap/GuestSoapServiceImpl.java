@@ -1,5 +1,7 @@
 package org.docencia.hotel.web.soap;
 
+import java.util.List;
+
 import org.docencia.hotel.domain.api.GuestDomain;
 import org.docencia.hotel.domain.model.Guest;
 import jakarta.jws.WebService;
@@ -21,12 +23,26 @@ public class GuestSoapServiceImpl implements GuestSoapService {
     }
 
     @Override
-    public Guest getGuestById(Long id) {
-        throw new UnsupportedOperationException("TODO");
+    public Guest getGuestById(String id) {
+        return guestDomain.findById(id).orElse(null);
     }
 
     @Override
     public Guest saveGuest(Guest guest) {
-        throw new UnsupportedOperationException("TODO");
+        return guestDomain.save(guest);
     }
+
+    @Override
+    public Boolean deleteGuest(String guestId) {
+        guestDomain.deleteById(guestId);
+        return true;
+    }
+
+    @Override
+    public List<Guest> getAllGuests() {
+        return guestDomain.findAll();
+    }
+
+
+
 }
