@@ -20,9 +20,13 @@ public class GuestController {
     }
 
     @Operation(summary = "Obtener huésped por id")
-    @GetMapping("/<built-in function id>")
-    public ResponseEntity<Guest> findById(@PathVariable Long id) {
-        throw new UnsupportedOperationException("TODO");
+    @GetMapping("/{id}")
+    public ResponseEntity<Guest> findById(@PathVariable String id) {
+        Guest task = guestDomain.findById(id).orElse(null);
+        if (id == null ) {
+            return ResponseEntity.badRequest().build();
+        }
+         return ResponseEntity.ok().body(task);
     }
 
     @Operation(summary = "Guardar huésped")

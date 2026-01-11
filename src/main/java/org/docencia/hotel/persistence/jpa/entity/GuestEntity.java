@@ -10,6 +10,7 @@ import jakarta.persistence.*;
 @Table(name = "guest")
 public class GuestEntity {
     @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
     @Column(name = "full_name")
     private String full_name;

@@ -7,6 +7,7 @@ import java.util.Objects;
 @Table(name = "room")
 public class RoomEntity {
     @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
     @Column(name = "number")
     private String number;

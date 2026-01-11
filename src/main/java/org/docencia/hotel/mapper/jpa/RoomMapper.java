@@ -12,11 +12,9 @@ import org.docencia.hotel.persistence.jpa.entity.RoomEntity;
 public interface RoomMapper {
     @Mapping(target = "hotelId", ignore = true)
     Room toDomain(RoomEntity entity);
-    
+
     @Mapping(target = "hotel", ignore = true)
     RoomEntity toEntity(Room domain);
-
-    
 
     List<Room> toDomainList(List<RoomEntity> entities);
 }

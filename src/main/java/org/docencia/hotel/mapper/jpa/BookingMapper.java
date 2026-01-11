@@ -15,10 +15,9 @@ public interface BookingMapper {
     Booking toDomain(BookingEntity entity);
 
     List<Booking> toDomainList(List<BookingEntity> entities);
-    
+
     @Mapping(target = "room", ignore = true)
     @Mapping(target = "guest", ignore = true)
     BookingEntity toEntity(Booking domain);
 
-    
 }

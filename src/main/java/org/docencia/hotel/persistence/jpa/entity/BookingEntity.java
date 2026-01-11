@@ -7,6 +7,7 @@ import java.util.Objects;
 @Table(name = "booking")
 public class BookingEntity {
     @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
     @OneToOne
     @JoinColumn(name = "room_id", nullable = false)
