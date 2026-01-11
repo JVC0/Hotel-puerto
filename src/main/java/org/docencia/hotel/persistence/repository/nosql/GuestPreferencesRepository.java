@@ -7,8 +7,8 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface GuestPreferencesRepository extends MongoRepository<GuestPreferencesDocument, String> {
-
+    
     GuestPreferencesDocument findByGuestId(String guestId);
 
-    void deleteByGuestId(String guestId);
+    Boolean deleteByGuestId(String guestId);
 }

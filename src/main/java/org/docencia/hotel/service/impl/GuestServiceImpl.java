@@ -14,13 +14,14 @@ import org.springframework.stereotype.Service;
 @Service
 public class GuestServiceImpl implements GuestService {
 
-    private  GuestPreferencesRepository guestPreferencesRepository;
+    private GuestPreferencesRepository guestPreferencesRepository;
     private GuestRepository guestRepository;
     private GuestMapper guestMapper;
 
     private GuestPreferencesMapper guestPreferencesMapper;
 
-    public GuestServiceImpl(GuestRepository guestRepository, GuestMapper guestMapper, GuestPreferencesMapper guestPreferencesMapper, GuestPreferencesRepository guestPreferencesRepository) {
+    public GuestServiceImpl(GuestRepository guestRepository, GuestMapper guestMapper,
+            GuestPreferencesMapper guestPreferencesMapper, GuestPreferencesRepository guestPreferencesRepository) {
         this.guestRepository = guestRepository;
         this.guestMapper = guestMapper;
         this.guestPreferencesMapper = guestPreferencesMapper;
@@ -32,12 +33,23 @@ public class GuestServiceImpl implements GuestService {
         if (guestId == null) {
             return Optional.empty();
         }
-        return Optional.of(guestMapper.toDomain(guestRepository.findById(guestId).get()));
+        GuestEntity guestEntity = guestRepository.findById(guestId).get();
+        GuestPreferencesDocument preferencesDocument = guestPreferencesRepository.findByGuestId(guestId);
+        return Optional.of(guestMapper.toDomain(guestEntity, preferencesDocument));
     }
 
     @Override
     public List<Guest> findAll() {
-        return guestMapper.toDomainList(guestRepository.findAll());
+        List<GuestEntity> guestEntities = guestRepository.findAll();
+        List<Guest> guests = new ArrayList<>();
+
+        for (GuestEntity entity : guestEntities) {
+            GuestPreferencesDocument preferencesDoc = guestPreferencesRepository.findByGuestId(entity.getId());
+            Guest guest = guestMapper.toDomain(entity, preferencesDoc);
+            guests.add(guest);
+        }
+
+        return guests;
     }
 
     @Override
@@ -58,6 +70,7 @@ public class GuestServiceImpl implements GuestService {
         if (guestId == null) {
             return false;
         }
+        guestPreferencesRepository.deleteByGuestId(guestId);
         guestRepository.deleteById(guestId);
         return true;
     }
