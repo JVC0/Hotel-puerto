@@ -9,12 +9,16 @@ public class RoomEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
+    
     @Column(name = "number")
     private String number;
+    
     @Column(name = "type")
     private String type;
+    
     @Column(name = "price_per_night")
-    private double price_per_night;
+    private double pricePerNight;
+    
     @ManyToOne
     @JoinColumn(name = "hotel_id", nullable = false)
     private HotelEntity hotel;
@@ -26,11 +30,11 @@ public class RoomEntity {
     public RoomEntity() {
     }
 
-    public RoomEntity(String id, String number, String type, double price_per_night, HotelEntity hotel) {
+    public RoomEntity(String id, String number, String type, double pricePerNight, HotelEntity hotel) {
         this.id = id;
         this.number = number;
         this.type = type;
-        this.price_per_night = price_per_night;
+        this.pricePerNight = pricePerNight;
         this.hotel = hotel;
     }
 
@@ -58,12 +62,12 @@ public class RoomEntity {
         this.type = type;
     }
 
-    public double getPrice_per_night() {
-        return this.price_per_night;
+    public double getPricePerNight() {
+        return this.pricePerNight;
     }
 
-    public void setPrice_per_night(double price_per_night) {
-        this.price_per_night = price_per_night;
+    public void setPricePerNight(double pricePerNight) {
+        this.pricePerNight = pricePerNight;
     }
 
     public HotelEntity getHotel() {
@@ -96,9 +100,8 @@ public class RoomEntity {
                 " id='" + getId() + "'" +
                 ", number='" + getNumber() + "'" +
                 ", type='" + getType() + "'" +
-                ", price_per_night='" + getPrice_per_night() + "'" +
+                ", pricePerNight='" + getPricePerNight() + "'" +
                 ", hotel='" + getHotel() + "'" +
                 "}";
     }
-
 }

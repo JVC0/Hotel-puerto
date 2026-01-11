@@ -9,16 +9,20 @@ public class BookingEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
+    
     @OneToOne
     @JoinColumn(name = "room_id", nullable = false)
     private RoomEntity room;
+    
     @OneToOne
     @JoinColumn(name = "guest_id", nullable = false)
     private GuestEntity guest;
+    
     @Column(name = "check_in")
-    private String check_in;
+    private String checkIn;
+    
     @Column(name = "check_out")
-    private String check_out;
+    private String checkOut;
 
     public BookingEntity(String id) {
         this.id = id;
@@ -27,12 +31,12 @@ public class BookingEntity {
     public BookingEntity() {
     }
 
-    public BookingEntity(String id, RoomEntity room, GuestEntity guest, String check_in, String check_out) {
+    public BookingEntity(String id, RoomEntity room, GuestEntity guest, String checkIn, String checkOut) {
         this.id = id;
         this.room = room;
         this.guest = guest;
-        this.check_in = check_in;
-        this.check_out = check_out;
+        this.checkIn = checkIn;
+        this.checkOut = checkOut;
     }
 
     public String getId() {
@@ -59,20 +63,20 @@ public class BookingEntity {
         this.guest = guest;
     }
 
-    public String getCheck_in() {
-        return this.check_in;
+    public String getCheckIn() {
+        return this.checkIn;
     }
 
-    public void setCheck_in(String check_in) {
-        this.check_in = check_in;
+    public void setCheckIn(String checkIn) {
+        this.checkIn = checkIn;
     }
 
-    public String getCheck_out() {
-        return this.check_out;
+    public String getCheckOut() {
+        return this.checkOut;
     }
 
-    public void setCheck_out(String check_out) {
-        this.check_out = check_out;
+    public void setCheckOut(String checkOut) {
+        this.checkOut = checkOut;
     }
 
     @Override
@@ -97,9 +101,8 @@ public class BookingEntity {
                 " id='" + getId() + "'" +
                 ", room='" + getRoom() + "'" +
                 ", guest='" + getGuest() + "'" +
-                ", check_in='" + getCheck_in() + "'" +
-                ", check_out='" + getCheck_out() + "'" +
+                ", checkIn='" + getCheckIn() + "'" +
+                ", checkOut='" + getCheckOut() + "'" +
                 "}";
     }
-
 }

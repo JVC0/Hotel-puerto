@@ -6,8 +6,8 @@ public class Room {
     private String id;
     private String number;
     private String type;
-    private double price_per_night;
-    private String hotelId;
+    private double pricePerNight;
+    private Hotel hotel;
 
     public Room(String id) {
         this.id = id;
@@ -16,12 +16,12 @@ public class Room {
     public Room() {
     }
 
-    public Room(String id, String number, String type, double price_per_night, String hotelId) {
+    public Room(String id, String number, String type, double pricePerNight, Hotel hotel) {
         this.id = id;
         this.number = number;
         this.type = type;
-        this.price_per_night = price_per_night;
-        this.hotelId = hotelId;
+        this.pricePerNight = pricePerNight;
+        this.hotel = hotel;
     }
 
     public String getId() {
@@ -48,20 +48,20 @@ public class Room {
         this.type = type;
     }
 
-    public double getPrice_per_night() {
-        return this.price_per_night;
+    public double getPricePerNight() {
+        return this.pricePerNight;
     }
 
-    public void setPrice_per_night(double price_per_night) {
-        this.price_per_night = price_per_night;
+    public void setPricePerNight(double pricePerNight) {
+        this.pricePerNight = pricePerNight;
     }
 
-    public String getHotelId() {
-        return this.hotelId;
+    public Hotel getHotel() {
+        return this.hotel;
     }
 
-    public void setHotelId(String hotelId) {
-        this.hotelId = hotelId;
+    public void setHotel(Hotel hotel) {
+        this.hotel = hotel;
     }
 
     @Override
@@ -86,8 +86,8 @@ public class Room {
                 " id='" + getId() + "'" +
                 ", number='" + getNumber() + "'" +
                 ", type='" + getType() + "'" +
-                ", price_per_night='" + getPrice_per_night() + "'" +
-                ", hotelId='" + getHotelId() + "'" +
+                ", pricePerNight='" + getPricePerNight() + "'" +
+                ", hotel='" + getHotel() + "'" +
                 "}";
     }
 }

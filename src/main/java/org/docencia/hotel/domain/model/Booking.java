@@ -4,10 +4,10 @@ import java.util.Objects;
 
 public class Booking {
     private String id;
-    private String roomId;
-    private String guestId;
-    private String check_in;
-    private String check_out;
+    private Room room;
+    private Guest guest;
+    private String checkIn;
+    private String checkOut;
 
     public Booking(String id) {
         this.id = id;
@@ -16,12 +16,12 @@ public class Booking {
     public Booking() {
     }
 
-    public Booking(String id, String roomId, String guestId, String check_in, String check_out) {
+    public Booking(String id, Room room, Guest guest, String checkIn, String checkOut) {
         this.id = id;
-        this.roomId = roomId;
-        this.guestId = guestId;
-        this.check_in = check_in;
-        this.check_out = check_out;
+        this.room = room;
+        this.guest = guest;
+        this.checkIn = checkIn;
+        this.checkOut = checkOut;
     }
 
     public String getId() {
@@ -32,36 +32,36 @@ public class Booking {
         this.id = id;
     }
 
-    public String getRoomId() {
-        return this.roomId;
+    public Room getRoom() {
+        return this.room;
     }
 
-    public void setRoomId(String roomId) {
-        this.roomId = roomId;
+    public void setRoom(Room room) {
+        this.room = room;
     }
 
-    public String getGuestId() {
-        return this.guestId;
+    public Guest getGuest() {
+        return this.guest;
     }
 
-    public void setGuestId(String guestId) {
-        this.guestId = guestId;
+    public void setGuest(Guest guest) {
+        this.guest = guest;
     }
 
-    public String getCheck_in() {
-        return this.check_in;
+    public String getCheckIn() {
+        return this.checkIn;
     }
 
-    public void setCheck_in(String check_in) {
-        this.check_in = check_in;
+    public void setCheckIn(String checkIn) {
+        this.checkIn = checkIn;
     }
 
-    public String getCheck_out() {
-        return this.check_out;
+    public String getCheckOut() {
+        return this.checkOut;
     }
 
-    public void setCheck_out(String check_out) {
-        this.check_out = check_out;
+    public void setCheckOut(String checkOut) {
+        this.checkOut = checkOut;
     }
 
     @Override
@@ -84,11 +84,10 @@ public class Booking {
     public String toString() {
         return "{" +
                 " id='" + getId() + "'" +
-                ", roomId='" + getRoomId() + "'" +
-                ", guestId='" + getGuestId() + "'" +
-                ", check_in='" + getCheck_in() + "'" +
-                ", check_out='" + getCheck_out() + "'" +
+                ", room='" + getRoom() + "'" +
+                ", guest='" + getGuest() + "'" +
+                ", checkIn='" + getCheckIn() + "'" +
+                ", checkOut='" + getCheckOut() + "'" +
                 "}";
     }
-
 }

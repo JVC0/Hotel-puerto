@@ -8,9 +8,9 @@ import java.util.List;
 import org.docencia.hotel.domain.model.Room;
 import org.docencia.hotel.persistence.jpa.entity.RoomEntity;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", uses = { HotelMapper.class })
 public interface RoomMapper {
-    @Mapping(target = "hotelId", ignore = true)
+
     Room toDomain(RoomEntity entity);
 
     @Mapping(target = "hotel", ignore = true)
